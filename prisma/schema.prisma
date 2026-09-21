@@ -17,35 +17,80 @@ enum Status {
   PUBLISHED
 }
 
+model Account {
+  id                Int           @id @default(autoincrement())
+  email             String
+  user              User?
+}
+
+model User {
+  id                  Int           @id @default(autoincrement())
+  username            String
+  account             Account       @relation(fields: [accountId], references: id, onDelete: Cascade)
+  accountId           Int           @unique @map("account_id")
+  createdAlbums       Album[]
+  collectedAlbums     UserAlbumCollection[]
+  collectedStickers   UserStickerCollection[] 
+}
+
 model Album {
   id                Int           @id @default(autoincrement())
   name              String
   pages             AlbumPage[]
   status            Status
-  coverImgUrl       String?
-  backCoverImgUrl   String?
+  coverImgUrl       String?       @map("cover_img_url")
+  backCoverImgUrl   String?       @map("back_cover_img_url")
+  authorId          Int           @map("author_id")
+  author            User          @relation(fields: [authorId], references: id)
+  collectedByUsers  UserAlbumCollection[]
+}
+
+model UserAlbumCollection {
+  user        User      @relation(fields: [userId], references: [id])
+  userId      Int       @map("user_id")
+  album       Album     @relation(fields: [albumId], references: [id])
+  albumId     Int       @map("album_id")
+
+  @@id([albumId, userId])
+}
+
+model AlbumPageTemplate {
+  id                Int          @id @default(autoincrement())
+  stickerQty        Int          @map("sticker_qty")
+  albumPages        AlbumPage[]
 }
 
 model AlbumPage {
-  id                  Int           @id @default(autoincrement())
-  albumId             Int
-  album               Album         @relation(fields: [albumId], references: [id], onDelete: Cascade) 
+  id                  Int                 @id @default(autoincrement())
+  albumId             Int                 @map("album_id")
+  album               Album               @relation(fields: [albumId], references: [id], onDelete: Cascade) 
   stickers            Sticker[]
-  pageNumber          Int
+  pageNumber          Int                 @map("page_number")
   name                String?
-  firstStickerNumber  Int
-  lastStickerNumber   Int
+  templateId          Int                 @map("template_id")
+  template            AlbumPageTemplate   @relation(fields: [templateId], references: [id], onDelete: Cascade)
 
   @@unique([albumId, pageNumber])
 }
 
 model Sticker {
-  id                Int           @id @default(autoincrement())
+  id                Int                       @id @default(autoincrement())
   name              String
-  albumPageId       Int
-  albumPage         AlbumPage     @relation(fields: [albumPageId], references: [id], onDelete: Cascade) 
-  stickerNumber     Int
+  albumPageId       Int                       @map("album_page_id")
+  albumPage         AlbumPage                 @relation(fields: [albumPageId], references: [id], onDelete: Cascade) 
+  stickerNumber     Int                       @map("sticker_number")
   status            Status
-  imgUrl            String?
+  imgUrl            String?                   @map("img_url")
   description       String?
+  collectedByUsers  UserStickerCollection[]
+}
+
+model UserStickerCollection {
+  userId        Int       @map("user_id")
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stickerId     Int       @map("sticker_id")
+  sticker       Sticker   @relation(fields: [stickerId], references: [id], onDelete: Cascade)
+  isGlued       Boolean   @default(false) @map("is_glued")
+
+  @@id([userId, stickerId])
 }
