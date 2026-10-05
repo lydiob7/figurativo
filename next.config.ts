@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       new URL('https://imgs.search.brave.com/**'),
+      new URL('https://raw.githubusercontent.com/**'),
       {
         protocol: 'https',
         hostname: 'cdn.wallapop.com',

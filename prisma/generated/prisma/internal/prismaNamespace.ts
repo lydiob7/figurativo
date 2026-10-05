@@ -80,11 +80,11 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 8.1.0-dev.6
+ * Prisma Client JS version: 8.1.0-dev.7
  * Query Engine version: d1b3f377ca835d73fd50954a5e22128b9ebdd6b8
  */
 export const prismaVersion: PrismaVersion = {
-  client: "8.1.0-dev.6",
+  client: "8.1.0-dev.7",
   engine: "d1b3f377ca835d73fd50954a5e22128b9ebdd6b8"
 }
 
@@ -1078,7 +1078,8 @@ export const AlbumScalarFieldEnum = {
   status: 'status',
   coverImgUrl: 'coverImgUrl',
   backCoverImgUrl: 'backCoverImgUrl',
-  authorId: 'authorId'
+  authorId: 'authorId',
+  description: 'description'
 } as const
 
 export type AlbumScalarFieldEnum = (typeof AlbumScalarFieldEnum)[keyof typeof AlbumScalarFieldEnum]

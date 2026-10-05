@@ -8,11 +8,58 @@ async function getAlbumPage(albumId: number, pageNumber: number) {
     where: { pageNumber, albumId, album: { status: 'PUBLISHED' } },
     include: {
       template: true,
-      stickers: true,
+      stickers: {
+        orderBy: {
+          stickerNumber: 'asc',
+        },
+      },
     },
   })
   if (!albumPage) notFound()
   return albumPage
+}
+
+async function AlbumPageContent({
+  params,
+}: {
+  params: Promise<{ id: string; pageNumber: string }>
+}) {
+  const { id, pageNumber } = await params
+
+  const albumPage = await getAlbumPage(
+    parseInt(id, 10),
+    parseInt(pageNumber, 10),
+  )
+  return (
+    <div className="border border-green-500 p-8 rounded-lg" key={albumPage.id}>
+      {!!albumPage.name && <h2 className="">{albumPage.name}</h2>}
+      <div className="grid gap-4 grid-cols-4">
+        {albumPage.stickers?.map((sticker) => (
+          <div className="p-4 border border-white rounded-lg" key={sticker.id}>
+            {!!sticker.imgUrl && (
+              <div className="relative h-40 w-full">
+                <Image
+                  src={sticker.imgUrl}
+                  alt={sticker.name}
+                  className="object-contain"
+                  fill
+                />
+              </div>
+            )}
+            <h3 className="text-center font-semibold text-lg mt-4">
+              {sticker.name}
+            </h3>
+            {!!sticker.description && (
+              <p className="text-center tracking-wider">
+                {sticker.description}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+      <div className="mt-8">{albumPage.pageNumber}</div>
+    </div>
+  )
 }
 
 export default async function AlbumPage({
@@ -21,53 +68,7 @@ export default async function AlbumPage({
   return (
     <div className="container mx-auto py-12">
       <Suspense fallback={<div>Loading...</div>}>
-        {params.then(async ({ id, pageNumber }) => {
-          const albumPage = await getAlbumPage(
-            parseInt(id, 10),
-            parseInt(pageNumber, 10),
-          )
-          console.log('ALBUM PAGE: ', albumPage)
-          return (
-            <div
-              className="border border-green-500 p-8 rounded-lg"
-              key={albumPage.id}
-            >
-              {!!albumPage.name && <h2 className="">{albumPage.name}</h2>}
-
-              <div className="grid gap-4 grid-cols-4">
-                {albumPage.stickers?.map((sticker) => (
-                  <div
-                    className="p-4 border border-white rounded-lg"
-                    key={sticker.id}
-                  >
-                    {!!sticker.imgUrl && (
-                      <div className="relative h-40 w-full">
-                        <Image
-                          src={sticker.imgUrl}
-                          alt={sticker.name}
-                          className="object-contain"
-                          fill
-                        />
-                      </div>
-                    )}
-
-                    <h3 className="text-center font-semibold text-lg mt-4">
-                      {sticker.name}
-                    </h3>
-
-                    {!!sticker.description && (
-                      <p className="text-center tracking-wider">
-                        {sticker.description}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-8">{albumPage.pageNumber}</div>
-            </div>
-          )
-        })}
+        <AlbumPageContent params={params} />
       </Suspense>
     </div>
   )

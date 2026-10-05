@@ -3,13 +3,29 @@
 import { Album } from '@/prisma/generated/prisma/client'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardAction,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import Link from 'next/link'
 
 interface AlbumCardProps {
   album: Album
   buyAlbum: (albumId: number) => Promise<void>
+  isInCollection?: boolean
 }
 
-export default function AlbumCard({ album, buyAlbum }: AlbumCardProps) {
+export default function AlbumCard({
+  album,
+  buyAlbum,
+  isInCollection,
+}: AlbumCardProps) {
   const router = useRouter()
   const handleBuyAlbum = async () => {
     try {
@@ -21,27 +37,35 @@ export default function AlbumCard({ album, buyAlbum }: AlbumCardProps) {
   }
 
   return (
-    <div key={album.id} className="border border-white p-8 rounded-xl">
-      {!!album.coverImgUrl && (
-        <div className="relative h-60 w-full mb-8">
-          <Image
-            src={album.coverImgUrl}
-            alt={album.name}
-            className="object-contain"
-            fill
-          />
-        </div>
+    <Card className="relative mx-auto w-full max-w-sm pt-0">
+      <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
+      {album.coverImgUrl && (
+        <Image
+          src={album.coverImgUrl}
+          alt={album.name}
+          width={400}
+          height={400}
+          className="relative z-20 aspect-video w-full object-cover"
+        />
       )}
-
-      <h2 className="text-2xl font-semibold text-center">{album.name}</h2>
-
-      <button
-        type="button"
-        onClick={handleBuyAlbum}
-        className="block mt-4 text-center mx-auto px-4 py-2 bg-blue-400 text-black"
-      >
-        Comprar
-      </button>
-    </div>
+      <CardHeader>
+        <CardAction>
+          <Badge variant="secondary">Featured</Badge>
+        </CardAction>
+        <CardTitle>{album.name}</CardTitle>
+        <CardDescription>{album.description}</CardDescription>
+      </CardHeader>
+      <CardFooter>
+        {isInCollection ? (
+          <Link href={`/album/${album.id}`} className="block w-full">
+            <Button className="w-full">Ver album</Button>
+          </Link>
+        ) : (
+          <Button onClick={handleBuyAlbum} className="w-full">
+            Coleccionar
+          </Button>
+        )}
+      </CardFooter>
+    </Card>
   )
 }

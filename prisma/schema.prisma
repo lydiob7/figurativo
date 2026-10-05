@@ -45,6 +45,7 @@ model Album {
   coverImgUrl       String?       @map("cover_img_url")
   backCoverImgUrl   String?       @map("back_cover_img_url")
   authorId          Int           @map("author_id")
+  description       String?
   author            User          @relation(fields: [authorId], references: id)
   collectedByUsers  UserAlbumCollection[]
 
