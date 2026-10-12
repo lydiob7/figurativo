@@ -27,28 +27,33 @@ export type AggregateUserStickerCollection = {
 }
 
 export type UserStickerCollectionAvgAggregateOutputType = {
+  id: number | null
   userId: number | null
   stickerId: number | null
 }
 
 export type UserStickerCollectionSumAggregateOutputType = {
+  id: number | null
   userId: number | null
   stickerId: number | null
 }
 
 export type UserStickerCollectionMinAggregateOutputType = {
+  id: number | null
   userId: number | null
   stickerId: number | null
   isGlued: boolean | null
 }
 
 export type UserStickerCollectionMaxAggregateOutputType = {
+  id: number | null
   userId: number | null
   stickerId: number | null
   isGlued: boolean | null
 }
 
 export type UserStickerCollectionCountAggregateOutputType = {
+  id: number
   userId: number
   stickerId: number
   isGlued: number
@@ -57,28 +62,33 @@ export type UserStickerCollectionCountAggregateOutputType = {
 
 
 export type UserStickerCollectionAvgAggregateInputType = {
+  id?: true
   userId?: true
   stickerId?: true
 }
 
 export type UserStickerCollectionSumAggregateInputType = {
+  id?: true
   userId?: true
   stickerId?: true
 }
 
 export type UserStickerCollectionMinAggregateInputType = {
+  id?: true
   userId?: true
   stickerId?: true
   isGlued?: true
 }
 
 export type UserStickerCollectionMaxAggregateInputType = {
+  id?: true
   userId?: true
   stickerId?: true
   isGlued?: true
 }
 
 export type UserStickerCollectionCountAggregateInputType = {
+  id?: true
   userId?: true
   stickerId?: true
   isGlued?: true
@@ -172,6 +182,7 @@ export type UserStickerCollectionGroupByArgs<ExtArgs extends runtime.Types.Exten
 }
 
 export type UserStickerCollectionGroupByOutputType = {
+  id: number
   userId: number
   stickerId: number
   isGlued: boolean
@@ -201,6 +212,7 @@ export type UserStickerCollectionWhereInput = {
   AND?: Prisma.UserStickerCollectionWhereInput | Prisma.UserStickerCollectionWhereInput[]
   OR?: Prisma.UserStickerCollectionWhereInput[]
   NOT?: Prisma.UserStickerCollectionWhereInput | Prisma.UserStickerCollectionWhereInput[]
+  id?: Prisma.IntFilter<"UserStickerCollection"> | number
   userId?: Prisma.IntFilter<"UserStickerCollection"> | number
   stickerId?: Prisma.IntFilter<"UserStickerCollection"> | number
   isGlued?: Prisma.BoolFilter<"UserStickerCollection"> | boolean
@@ -209,6 +221,7 @@ export type UserStickerCollectionWhereInput = {
 }
 
 export type UserStickerCollectionOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
   isGlued?: Prisma.SortOrder
@@ -217,7 +230,7 @@ export type UserStickerCollectionOrderByWithRelationInput = {
 }
 
 export type UserStickerCollectionWhereUniqueInput = Prisma.AtLeast<{
-  userId_stickerId?: Prisma.UserStickerCollectionUserIdStickerIdCompoundUniqueInput
+  id?: number
   AND?: Prisma.UserStickerCollectionWhereInput | Prisma.UserStickerCollectionWhereInput[]
   OR?: Prisma.UserStickerCollectionWhereInput[]
   NOT?: Prisma.UserStickerCollectionWhereInput | Prisma.UserStickerCollectionWhereInput[]
@@ -226,9 +239,10 @@ export type UserStickerCollectionWhereUniqueInput = Prisma.AtLeast<{
   isGlued?: Prisma.BoolFilter<"UserStickerCollection"> | boolean
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   sticker?: Prisma.XOR<Prisma.StickerScalarRelationFilter, Prisma.StickerWhereInput>
-}, "userId_stickerId">
+}, "id">
 
 export type UserStickerCollectionOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
   isGlued?: Prisma.SortOrder
@@ -243,6 +257,7 @@ export type UserStickerCollectionScalarWhereWithAggregatesInput = {
   AND?: Prisma.UserStickerCollectionScalarWhereWithAggregatesInput | Prisma.UserStickerCollectionScalarWhereWithAggregatesInput[]
   OR?: Prisma.UserStickerCollectionScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserStickerCollectionScalarWhereWithAggregatesInput | Prisma.UserStickerCollectionScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"UserStickerCollection"> | number
   userId?: Prisma.IntWithAggregatesFilter<"UserStickerCollection"> | number
   stickerId?: Prisma.IntWithAggregatesFilter<"UserStickerCollection"> | number
   isGlued?: Prisma.BoolWithAggregatesFilter<"UserStickerCollection"> | boolean
@@ -255,6 +270,7 @@ export type UserStickerCollectionCreateInput = {
 }
 
 export type UserStickerCollectionUncheckedCreateInput = {
+  id?: number
   userId: number
   stickerId: number
   isGlued?: boolean
@@ -267,12 +283,14 @@ export type UserStickerCollectionUpdateInput = {
 }
 
 export type UserStickerCollectionUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   stickerId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserStickerCollectionCreateManyInput = {
+  id?: number
   userId: number
   stickerId: number
   isGlued?: boolean
@@ -283,6 +301,7 @@ export type UserStickerCollectionUpdateManyMutationInput = {
 }
 
 export type UserStickerCollectionUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   stickerId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -298,35 +317,35 @@ export type UserStickerCollectionOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type UserStickerCollectionUserIdStickerIdCompoundUniqueInput = {
-  userId: number
-  stickerId: number
-}
-
 export type UserStickerCollectionCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
   isGlued?: Prisma.SortOrder
 }
 
 export type UserStickerCollectionAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
 }
 
 export type UserStickerCollectionMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
   isGlued?: Prisma.SortOrder
 }
 
 export type UserStickerCollectionMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
   isGlued?: Prisma.SortOrder
 }
 
 export type UserStickerCollectionSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   stickerId?: Prisma.SortOrder
 }
@@ -425,6 +444,7 @@ export type UserStickerCollectionCreateWithoutUserInput = {
 }
 
 export type UserStickerCollectionUncheckedCreateWithoutUserInput = {
+  id?: number
   stickerId: number
   isGlued?: boolean
 }
@@ -459,6 +479,7 @@ export type UserStickerCollectionScalarWhereInput = {
   AND?: Prisma.UserStickerCollectionScalarWhereInput | Prisma.UserStickerCollectionScalarWhereInput[]
   OR?: Prisma.UserStickerCollectionScalarWhereInput[]
   NOT?: Prisma.UserStickerCollectionScalarWhereInput | Prisma.UserStickerCollectionScalarWhereInput[]
+  id?: Prisma.IntFilter<"UserStickerCollection"> | number
   userId?: Prisma.IntFilter<"UserStickerCollection"> | number
   stickerId?: Prisma.IntFilter<"UserStickerCollection"> | number
   isGlued?: Prisma.BoolFilter<"UserStickerCollection"> | boolean
@@ -470,6 +491,7 @@ export type UserStickerCollectionCreateWithoutStickerInput = {
 }
 
 export type UserStickerCollectionUncheckedCreateWithoutStickerInput = {
+  id?: number
   userId: number
   isGlued?: boolean
 }
@@ -501,6 +523,7 @@ export type UserStickerCollectionUpdateManyWithWhereWithoutStickerInput = {
 }
 
 export type UserStickerCollectionCreateManyUserInput = {
+  id?: number
   stickerId: number
   isGlued?: boolean
 }
@@ -511,16 +534,19 @@ export type UserStickerCollectionUpdateWithoutUserInput = {
 }
 
 export type UserStickerCollectionUncheckedUpdateWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   stickerId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserStickerCollectionUncheckedUpdateManyWithoutUserInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   stickerId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserStickerCollectionCreateManyStickerInput = {
+  id?: number
   userId: number
   isGlued?: boolean
 }
@@ -531,11 +557,13 @@ export type UserStickerCollectionUpdateWithoutStickerInput = {
 }
 
 export type UserStickerCollectionUncheckedUpdateWithoutStickerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UserStickerCollectionUncheckedUpdateManyWithoutStickerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   userId?: Prisma.IntFieldUpdateOperationsInput | number
   isGlued?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
@@ -543,6 +571,7 @@ export type UserStickerCollectionUncheckedUpdateManyWithoutStickerInput = {
 
 
 export type UserStickerCollectionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   stickerId?: boolean
   isGlued?: boolean
@@ -551,6 +580,7 @@ export type UserStickerCollectionSelect<ExtArgs extends runtime.Types.Extensions
 }, ExtArgs["result"]["userStickerCollection"]>
 
 export type UserStickerCollectionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   stickerId?: boolean
   isGlued?: boolean
@@ -559,6 +589,7 @@ export type UserStickerCollectionSelectCreateManyAndReturn<ExtArgs extends runti
 }, ExtArgs["result"]["userStickerCollection"]>
 
 export type UserStickerCollectionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   userId?: boolean
   stickerId?: boolean
   isGlued?: boolean
@@ -567,12 +598,13 @@ export type UserStickerCollectionSelectUpdateManyAndReturn<ExtArgs extends runti
 }, ExtArgs["result"]["userStickerCollection"]>
 
 export type UserStickerCollectionSelectScalar = {
+  id?: boolean
   userId?: boolean
   stickerId?: boolean
   isGlued?: boolean
 }
 
-export type UserStickerCollectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"userId" | "stickerId" | "isGlued", ExtArgs["result"]["userStickerCollection"]>
+export type UserStickerCollectionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "stickerId" | "isGlued", ExtArgs["result"]["userStickerCollection"]>
 export type UserStickerCollectionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   sticker?: boolean | Prisma.StickerDefaultArgs<ExtArgs>
@@ -593,6 +625,7 @@ export type $UserStickerCollectionPayload<ExtArgs extends runtime.Types.Extensio
     sticker: Prisma.$StickerPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     userId: number
     stickerId: number
     isGlued: boolean
@@ -679,8 +712,8 @@ export interface UserStickerCollectionDelegate<ExtArgs extends runtime.Types.Ext
    * // Get first 10 UserStickerCollections
    * const userStickerCollections = await prisma.userStickerCollection.findMany({ take: 10 })
    * 
-   * // Only select the `userId`
-   * const userStickerCollectionWithUserIdOnly = await prisma.userStickerCollection.findMany({ select: { userId: true } })
+   * // Only select the `id`
+   * const userStickerCollectionWithIdOnly = await prisma.userStickerCollection.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends UserStickerCollectionFindManyArgs>(args?: Prisma.SelectSubset<T, UserStickerCollectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserStickerCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -724,9 +757,9 @@ export interface UserStickerCollectionDelegate<ExtArgs extends runtime.Types.Ext
    *   ]
    * })
    * 
-   * // Create many UserStickerCollections and only return the `userId`
-   * const userStickerCollectionWithUserIdOnly = await prisma.userStickerCollection.createManyAndReturn({
-   *   select: { userId: true },
+   * // Create many UserStickerCollections and only return the `id`
+   * const userStickerCollectionWithIdOnly = await prisma.userStickerCollection.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -815,9 +848,9 @@ export interface UserStickerCollectionDelegate<ExtArgs extends runtime.Types.Ext
    *   ]
    * })
    * 
-   * // Update zero or more UserStickerCollections and only return the `userId`
-   * const userStickerCollectionWithUserIdOnly = await prisma.userStickerCollection.updateManyAndReturn({
-   *   select: { userId: true },
+   * // Update zero or more UserStickerCollections and only return the `id`
+   * const userStickerCollectionWithIdOnly = await prisma.userStickerCollection.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1021,6 +1054,7 @@ export interface Prisma__UserStickerCollectionClient<T, Null = never, ExtArgs ex
  * Fields of the UserStickerCollection model
  */
 export interface UserStickerCollectionFieldRefs {
+  readonly id: Prisma.FieldRef<"UserStickerCollection", 'Int'>
   readonly userId: Prisma.FieldRef<"UserStickerCollection", 'Int'>
   readonly stickerId: Prisma.FieldRef<"UserStickerCollection", 'Int'>
   readonly isGlued: Prisma.FieldRef<"UserStickerCollection", 'Boolean'>

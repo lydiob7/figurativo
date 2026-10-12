@@ -32,22 +32,28 @@ model User {
   accountId           Int           @unique @map("account_id")
   createdAlbums       Album[]
   collectedAlbums     UserAlbumCollection[]
-  collectedStickers   UserStickerCollection[] 
+  collectedStickers   UserStickerCollection[]
+
+  stickerPacks        UserStickerPack[]
 
   @@map("user")
 }
 
 model Album {
-  id                Int           @id @default(autoincrement())
+  id                Int                 @id @default(autoincrement())
   name              String
   pages             AlbumPage[]
   status            Status
-  coverImgUrl       String?       @map("cover_img_url")
-  backCoverImgUrl   String?       @map("back_cover_img_url")
-  authorId          Int           @map("author_id")
+  coverImgUrl       String?             @map("cover_img_url")
+  backCoverImgUrl   String?             @map("back_cover_img_url")
+  authorId          Int                 @map("author_id")
   description       String?
-  author            User          @relation(fields: [authorId], references: id)
+  author            User                @relation(fields: [authorId], references: id)
   collectedByUsers  UserAlbumCollection[]
+
+  // campos para los paquetes
+  stickersPerPack   Int?                @default(5) @map("stickers_per_pack")
+  stickerPacks      UserStickerPack[]
 
   @@map("album")
 }
@@ -99,12 +105,26 @@ model Sticker {
 }
 
 model UserStickerCollection {
+  id            Int       @id @default(autoincrement())
   userId        Int       @map("user_id")
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   stickerId     Int       @map("sticker_id")
   sticker       Sticker   @relation(fields: [stickerId], references: [id], onDelete: Cascade)
+
+  // NOTE: validar en el codigo que la misma figurita no se pueda pegar dos veces en el mismo album
   isGlued       Boolean   @default(false) @map("is_glued")
 
-  @@id([userId, stickerId])
   @@map("user_sticker_collection")
+}
+
+model UserStickerPack {
+  id                Int           @id @default(autoincrement())
+  userId            Int           @map("user_id")
+  albumId           Int           @map("album_id")
+  openedAt          DateTime      @map("opened_at")
+
+  user              User          @relation(fields: [userId], references: id)
+  album             Album         @relation(fields: [albumId], references: id)
+
+  @@map("user_sticker_pack")
 }

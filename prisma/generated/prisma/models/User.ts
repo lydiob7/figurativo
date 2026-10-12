@@ -208,6 +208,7 @@ export type UserWhereInput = {
   createdAlbums?: Prisma.AlbumListRelationFilter
   collectedAlbums?: Prisma.UserAlbumCollectionListRelationFilter
   collectedStickers?: Prisma.UserStickerCollectionListRelationFilter
+  stickerPacks?: Prisma.UserStickerPackListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -218,6 +219,7 @@ export type UserOrderByWithRelationInput = {
   createdAlbums?: Prisma.AlbumOrderByRelationAggregateInput
   collectedAlbums?: Prisma.UserAlbumCollectionOrderByRelationAggregateInput
   collectedStickers?: Prisma.UserStickerCollectionOrderByRelationAggregateInput
+  stickerPacks?: Prisma.UserStickerPackOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -231,6 +233,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   createdAlbums?: Prisma.AlbumListRelationFilter
   collectedAlbums?: Prisma.UserAlbumCollectionListRelationFilter
   collectedStickers?: Prisma.UserStickerCollectionListRelationFilter
+  stickerPacks?: Prisma.UserStickerPackListRelationFilter
 }, "id" | "accountId">
 
 export type UserOrderByWithAggregationInput = {
@@ -259,6 +262,7 @@ export type UserCreateInput = {
   createdAlbums?: Prisma.AlbumCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -268,6 +272,7 @@ export type UserUncheckedCreateInput = {
   createdAlbums?: Prisma.AlbumUncheckedCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -276,6 +281,7 @@ export type UserUpdateInput = {
   createdAlbums?: Prisma.AlbumUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -285,6 +291,7 @@ export type UserUncheckedUpdateInput = {
   createdAlbums?: Prisma.AlbumUncheckedUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -415,11 +422,26 @@ export type UserUpdateOneRequiredWithoutCollectedStickersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCollectedStickersInput, Prisma.UserUpdateWithoutCollectedStickersInput>, Prisma.UserUncheckedUpdateWithoutCollectedStickersInput>
 }
 
+export type UserCreateNestedOneWithoutStickerPacksInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutStickerPacksInput, Prisma.UserUncheckedCreateWithoutStickerPacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutStickerPacksInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutStickerPacksNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutStickerPacksInput, Prisma.UserUncheckedCreateWithoutStickerPacksInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutStickerPacksInput
+  upsert?: Prisma.UserUpsertWithoutStickerPacksInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutStickerPacksInput, Prisma.UserUpdateWithoutStickerPacksInput>, Prisma.UserUncheckedUpdateWithoutStickerPacksInput>
+}
+
 export type UserCreateWithoutAccountInput = {
   username: string
   createdAlbums?: Prisma.AlbumCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountInput = {
@@ -428,6 +450,7 @@ export type UserUncheckedCreateWithoutAccountInput = {
   createdAlbums?: Prisma.AlbumUncheckedCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountInput = {
@@ -451,6 +474,7 @@ export type UserUpdateWithoutAccountInput = {
   createdAlbums?: Prisma.AlbumUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountInput = {
@@ -459,6 +483,7 @@ export type UserUncheckedUpdateWithoutAccountInput = {
   createdAlbums?: Prisma.AlbumUncheckedUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCreatedAlbumsInput = {
@@ -466,6 +491,7 @@ export type UserCreateWithoutCreatedAlbumsInput = {
   account: Prisma.AccountCreateNestedOneWithoutUserInput
   collectedAlbums?: Prisma.UserAlbumCollectionCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCreatedAlbumsInput = {
@@ -474,6 +500,7 @@ export type UserUncheckedCreateWithoutCreatedAlbumsInput = {
   accountId: number
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutUserInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCreatedAlbumsInput = {
@@ -497,6 +524,7 @@ export type UserUpdateWithoutCreatedAlbumsInput = {
   account?: Prisma.AccountUpdateOneRequiredWithoutUserNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCreatedAlbumsInput = {
@@ -505,6 +533,7 @@ export type UserUncheckedUpdateWithoutCreatedAlbumsInput = {
   accountId?: Prisma.IntFieldUpdateOperationsInput | number
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutUserNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCollectedAlbumsInput = {
@@ -512,6 +541,7 @@ export type UserCreateWithoutCollectedAlbumsInput = {
   account: Prisma.AccountCreateNestedOneWithoutUserInput
   createdAlbums?: Prisma.AlbumCreateNestedManyWithoutAuthorInput
   collectedStickers?: Prisma.UserStickerCollectionCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCollectedAlbumsInput = {
@@ -520,6 +550,7 @@ export type UserUncheckedCreateWithoutCollectedAlbumsInput = {
   accountId: number
   createdAlbums?: Prisma.AlbumUncheckedCreateNestedManyWithoutAuthorInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCollectedAlbumsInput = {
@@ -543,6 +574,7 @@ export type UserUpdateWithoutCollectedAlbumsInput = {
   account?: Prisma.AccountUpdateOneRequiredWithoutUserNestedInput
   createdAlbums?: Prisma.AlbumUpdateManyWithoutAuthorNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCollectedAlbumsInput = {
@@ -551,6 +583,7 @@ export type UserUncheckedUpdateWithoutCollectedAlbumsInput = {
   accountId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAlbums?: Prisma.AlbumUncheckedUpdateManyWithoutAuthorNestedInput
   collectedStickers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutCollectedStickersInput = {
@@ -558,6 +591,7 @@ export type UserCreateWithoutCollectedStickersInput = {
   account: Prisma.AccountCreateNestedOneWithoutUserInput
   createdAlbums?: Prisma.AlbumCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutCollectedStickersInput = {
@@ -566,6 +600,7 @@ export type UserUncheckedCreateWithoutCollectedStickersInput = {
   accountId: number
   createdAlbums?: Prisma.AlbumUncheckedCreateNestedManyWithoutAuthorInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutUserInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutCollectedStickersInput = {
@@ -589,6 +624,7 @@ export type UserUpdateWithoutCollectedStickersInput = {
   account?: Prisma.AccountUpdateOneRequiredWithoutUserNestedInput
   createdAlbums?: Prisma.AlbumUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCollectedStickersInput = {
@@ -597,6 +633,57 @@ export type UserUncheckedUpdateWithoutCollectedStickersInput = {
   accountId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAlbums?: Prisma.AlbumUncheckedUpdateManyWithoutAuthorNestedInput
   collectedAlbums?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutUserNestedInput
+  stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutStickerPacksInput = {
+  username: string
+  account: Prisma.AccountCreateNestedOneWithoutUserInput
+  createdAlbums?: Prisma.AlbumCreateNestedManyWithoutAuthorInput
+  collectedAlbums?: Prisma.UserAlbumCollectionCreateNestedManyWithoutUserInput
+  collectedStickers?: Prisma.UserStickerCollectionCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutStickerPacksInput = {
+  id?: number
+  username: string
+  accountId: number
+  createdAlbums?: Prisma.AlbumUncheckedCreateNestedManyWithoutAuthorInput
+  collectedAlbums?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutUserInput
+  collectedStickers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutStickerPacksInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutStickerPacksInput, Prisma.UserUncheckedCreateWithoutStickerPacksInput>
+}
+
+export type UserUpsertWithoutStickerPacksInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutStickerPacksInput, Prisma.UserUncheckedUpdateWithoutStickerPacksInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutStickerPacksInput, Prisma.UserUncheckedCreateWithoutStickerPacksInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutStickerPacksInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutStickerPacksInput, Prisma.UserUncheckedUpdateWithoutStickerPacksInput>
+}
+
+export type UserUpdateWithoutStickerPacksInput = {
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  account?: Prisma.AccountUpdateOneRequiredWithoutUserNestedInput
+  createdAlbums?: Prisma.AlbumUpdateManyWithoutAuthorNestedInput
+  collectedAlbums?: Prisma.UserAlbumCollectionUpdateManyWithoutUserNestedInput
+  collectedStickers?: Prisma.UserStickerCollectionUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutStickerPacksInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  username?: Prisma.StringFieldUpdateOperationsInput | string
+  accountId?: Prisma.IntFieldUpdateOperationsInput | number
+  createdAlbums?: Prisma.AlbumUncheckedUpdateManyWithoutAuthorNestedInput
+  collectedAlbums?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutUserNestedInput
+  collectedStickers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -608,12 +695,14 @@ export type UserCountOutputType = {
   createdAlbums: number
   collectedAlbums: number
   collectedStickers: number
+  stickerPacks: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   createdAlbums?: boolean | UserCountOutputTypeCountCreatedAlbumsArgs
   collectedAlbums?: boolean | UserCountOutputTypeCountCollectedAlbumsArgs
   collectedStickers?: boolean | UserCountOutputTypeCountCollectedStickersArgs
+  stickerPacks?: boolean | UserCountOutputTypeCountStickerPacksArgs
 }
 
 /**
@@ -647,6 +736,13 @@ export type UserCountOutputTypeCountCollectedStickersArgs<ExtArgs extends runtim
   where?: Prisma.UserStickerCollectionWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountStickerPacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserStickerPackWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -656,6 +752,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   createdAlbums?: boolean | Prisma.User$createdAlbumsArgs<ExtArgs>
   collectedAlbums?: boolean | Prisma.User$collectedAlbumsArgs<ExtArgs>
   collectedStickers?: boolean | Prisma.User$collectedStickersArgs<ExtArgs>
+  stickerPacks?: boolean | Prisma.User$stickerPacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -685,6 +782,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAlbums?: boolean | Prisma.User$createdAlbumsArgs<ExtArgs>
   collectedAlbums?: boolean | Prisma.User$collectedAlbumsArgs<ExtArgs>
   collectedStickers?: boolean | Prisma.User$collectedStickersArgs<ExtArgs>
+  stickerPacks?: boolean | Prisma.User$stickerPacksArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -701,6 +799,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     createdAlbums: Prisma.$AlbumPayload<ExtArgs>[]
     collectedAlbums: Prisma.$UserAlbumCollectionPayload<ExtArgs>[]
     collectedStickers: Prisma.$UserStickerCollectionPayload<ExtArgs>[]
+    stickerPacks: Prisma.$UserStickerPackPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1104,6 +1203,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   createdAlbums<T extends Prisma.User$createdAlbumsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$createdAlbumsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   collectedAlbums<T extends Prisma.User$collectedAlbumsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$collectedAlbumsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserAlbumCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   collectedStickers<T extends Prisma.User$collectedStickersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$collectedStickersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserStickerCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  stickerPacks<T extends Prisma.User$stickerPacksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$stickerPacksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserStickerPackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1606,6 +1706,30 @@ export type User$collectedStickersArgs<ExtArgs extends runtime.Types.Extensions.
   take?: number
   skip?: number
   distinct?: Prisma.UserStickerCollectionScalarFieldEnum | Prisma.UserStickerCollectionScalarFieldEnum[]
+}
+
+/**
+ * User.stickerPacks
+ */
+export type User$stickerPacksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserStickerPack
+   */
+  select?: Prisma.UserStickerPackSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserStickerPack
+   */
+  omit?: Prisma.UserStickerPackOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserStickerPackInclude<ExtArgs> | null
+  where?: Prisma.UserStickerPackWhereInput
+  orderBy?: Prisma.UserStickerPackOrderByWithRelationInput | Prisma.UserStickerPackOrderByWithRelationInput[]
+  cursor?: Prisma.UserStickerPackWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserStickerPackScalarFieldEnum | Prisma.UserStickerPackScalarFieldEnum[]
 }
 
 /**

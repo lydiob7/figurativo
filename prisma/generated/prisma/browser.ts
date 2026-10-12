@@ -57,3 +57,8 @@ export type Sticker = Prisma.StickerModel
  * 
  */
 export type UserStickerCollection = Prisma.UserStickerCollectionModel
+/**
+ * Model UserStickerPack
+ * 
+ */
+export type UserStickerPack = Prisma.UserStickerPackModel

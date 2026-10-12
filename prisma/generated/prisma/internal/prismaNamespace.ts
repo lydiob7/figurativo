@@ -80,11 +80,11 @@ export type PrismaVersion = {
 }
 
 /**
- * Prisma Client JS version: 8.1.0-dev.7
+ * Prisma Client JS version: 8.1.0-dev.6
  * Query Engine version: d1b3f377ca835d73fd50954a5e22128b9ebdd6b8
  */
 export const prismaVersion: PrismaVersion = {
-  client: "8.1.0-dev.7",
+  client: "8.1.0-dev.6",
   engine: "d1b3f377ca835d73fd50954a5e22128b9ebdd6b8"
 }
 
@@ -404,7 +404,8 @@ export const ModelName = {
   AlbumPageTemplate: 'AlbumPageTemplate',
   AlbumPage: 'AlbumPage',
   Sticker: 'Sticker',
-  UserStickerCollection: 'UserStickerCollection'
+  UserStickerCollection: 'UserStickerCollection',
+  UserStickerPack: 'UserStickerPack'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -420,7 +421,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "account" | "user" | "album" | "userAlbumCollection" | "albumPageTemplate" | "albumPage" | "sticker" | "userStickerCollection"
+    modelProps: "account" | "user" | "album" | "userAlbumCollection" | "albumPageTemplate" | "albumPage" | "sticker" | "userStickerCollection" | "userStickerPack"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1016,6 +1017,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserStickerPack: {
+      payload: Prisma.$UserStickerPackPayload<ExtArgs>
+      fields: Prisma.UserStickerPackFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserStickerPackFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserStickerPackFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        findFirst: {
+          args: Prisma.UserStickerPackFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserStickerPackFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        findMany: {
+          args: Prisma.UserStickerPackFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>[]
+        }
+        create: {
+          args: Prisma.UserStickerPackCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        createMany: {
+          args: Prisma.UserStickerPackCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserStickerPackCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>[]
+        }
+        delete: {
+          args: Prisma.UserStickerPackDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        update: {
+          args: Prisma.UserStickerPackUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserStickerPackDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserStickerPackUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserStickerPackUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserStickerPackUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserStickerPackPayload>
+        }
+        aggregate: {
+          args: Prisma.UserStickerPackAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserStickerPack>
+        }
+        groupBy: {
+          args: Prisma.UserStickerPackGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserStickerPackGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserStickerPackCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserStickerPackCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1079,7 +1154,8 @@ export const AlbumScalarFieldEnum = {
   coverImgUrl: 'coverImgUrl',
   backCoverImgUrl: 'backCoverImgUrl',
   authorId: 'authorId',
-  description: 'description'
+  description: 'description',
+  stickersPerPack: 'stickersPerPack'
 } as const
 
 export type AlbumScalarFieldEnum = (typeof AlbumScalarFieldEnum)[keyof typeof AlbumScalarFieldEnum]
@@ -1126,12 +1202,23 @@ export type StickerScalarFieldEnum = (typeof StickerScalarFieldEnum)[keyof typeo
 
 
 export const UserStickerCollectionScalarFieldEnum = {
+  id: 'id',
   userId: 'userId',
   stickerId: 'stickerId',
   isGlued: 'isGlued'
 } as const
 
 export type UserStickerCollectionScalarFieldEnum = (typeof UserStickerCollectionScalarFieldEnum)[keyof typeof UserStickerCollectionScalarFieldEnum]
+
+
+export const UserStickerPackScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  albumId: 'albumId',
+  openedAt: 'openedAt'
+} as const
+
+export type UserStickerPackScalarFieldEnum = (typeof UserStickerPackScalarFieldEnum)[keyof typeof UserStickerPackScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1210,6 +1297,20 @@ export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
+ * Reference to a field of type 'DateTime[]'
+ */
+export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
 
 
@@ -1385,6 +1486,7 @@ export type GlobalOmitConfig = {
   albumPage?: Prisma.AlbumPageOmit
   sticker?: Prisma.StickerOmit
   userStickerCollection?: Prisma.UserStickerCollectionOmit
+  userStickerPack?: Prisma.UserStickerPackOmit
 }
 
 /* Types for Logging */

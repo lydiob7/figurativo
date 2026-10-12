@@ -58,7 +58,8 @@ export const ModelName = {
   AlbumPageTemplate: 'AlbumPageTemplate',
   AlbumPage: 'AlbumPage',
   Sticker: 'Sticker',
-  UserStickerCollection: 'UserStickerCollection'
+  UserStickerCollection: 'UserStickerCollection',
+  UserStickerPack: 'UserStickerPack'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -101,7 +102,8 @@ export const AlbumScalarFieldEnum = {
   coverImgUrl: 'coverImgUrl',
   backCoverImgUrl: 'backCoverImgUrl',
   authorId: 'authorId',
-  description: 'description'
+  description: 'description',
+  stickersPerPack: 'stickersPerPack'
 } as const
 
 export type AlbumScalarFieldEnum = (typeof AlbumScalarFieldEnum)[keyof typeof AlbumScalarFieldEnum]
@@ -148,12 +150,23 @@ export type StickerScalarFieldEnum = (typeof StickerScalarFieldEnum)[keyof typeo
 
 
 export const UserStickerCollectionScalarFieldEnum = {
+  id: 'id',
   userId: 'userId',
   stickerId: 'stickerId',
   isGlued: 'isGlued'
 } as const
 
 export type UserStickerCollectionScalarFieldEnum = (typeof UserStickerCollectionScalarFieldEnum)[keyof typeof UserStickerCollectionScalarFieldEnum]
+
+
+export const UserStickerPackScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  albumId: 'albumId',
+  openedAt: 'openedAt'
+} as const
+
+export type UserStickerPackScalarFieldEnum = (typeof UserStickerPackScalarFieldEnum)[keyof typeof UserStickerPackScalarFieldEnum]
 
 
 export const SortOrder = {
