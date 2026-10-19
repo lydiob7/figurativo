@@ -143,7 +143,8 @@ export const StickerScalarFieldEnum = {
   stickerNumber: 'stickerNumber',
   status: 'status',
   imgUrl: 'imgUrl',
-  description: 'description'
+  description: 'description',
+  rarity: 'rarity'
 } as const
 
 export type StickerScalarFieldEnum = (typeof StickerScalarFieldEnum)[keyof typeof StickerScalarFieldEnum]

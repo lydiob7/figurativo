@@ -1195,7 +1195,8 @@ export const StickerScalarFieldEnum = {
   stickerNumber: 'stickerNumber',
   status: 'status',
   imgUrl: 'imgUrl',
-  description: 'description'
+  description: 'description',
+  rarity: 'rarity'
 } as const
 
 export type StickerScalarFieldEnum = (typeof StickerScalarFieldEnum)[keyof typeof StickerScalarFieldEnum]
@@ -1290,6 +1291,20 @@ export type EnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
  * Reference to a field of type 'Status[]'
  */
 export type ListEnumStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Status[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Rarity'
+ */
+export type EnumRarityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Rarity'>
+    
+
+
+/**
+ * Reference to a field of type 'Rarity[]'
+ */
+export type ListEnumRarityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Rarity[]'>
     
 
 

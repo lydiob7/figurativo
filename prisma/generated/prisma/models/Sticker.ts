@@ -46,6 +46,7 @@ export type StickerMinAggregateOutputType = {
   status: $Enums.Status | null
   imgUrl: string | null
   description: string | null
+  rarity: $Enums.Rarity | null
 }
 
 export type StickerMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type StickerMaxAggregateOutputType = {
   status: $Enums.Status | null
   imgUrl: string | null
   description: string | null
+  rarity: $Enums.Rarity | null
 }
 
 export type StickerCountAggregateOutputType = {
@@ -66,6 +68,7 @@ export type StickerCountAggregateOutputType = {
   status: number
   imgUrl: number
   description: number
+  rarity: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type StickerMinAggregateInputType = {
   status?: true
   imgUrl?: true
   description?: true
+  rarity?: true
 }
 
 export type StickerMaxAggregateInputType = {
@@ -100,6 +104,7 @@ export type StickerMaxAggregateInputType = {
   status?: true
   imgUrl?: true
   description?: true
+  rarity?: true
 }
 
 export type StickerCountAggregateInputType = {
@@ -110,6 +115,7 @@ export type StickerCountAggregateInputType = {
   status?: true
   imgUrl?: true
   description?: true
+  rarity?: true
   _all?: true
 }
 
@@ -207,6 +213,7 @@ export type StickerGroupByOutputType = {
   status: $Enums.Status
   imgUrl: string | null
   description: string | null
+  rarity: $Enums.Rarity
   _count: StickerCountAggregateOutputType | null
   _avg: StickerAvgAggregateOutputType | null
   _sum: StickerSumAggregateOutputType | null
@@ -240,6 +247,7 @@ export type StickerWhereInput = {
   status?: Prisma.EnumStatusFilter<"Sticker"> | $Enums.Status
   imgUrl?: Prisma.StringNullableFilter<"Sticker"> | string | null
   description?: Prisma.StringNullableFilter<"Sticker"> | string | null
+  rarity?: Prisma.EnumRarityFilter<"Sticker"> | $Enums.Rarity
   albumPage?: Prisma.XOR<Prisma.AlbumPageScalarRelationFilter, Prisma.AlbumPageWhereInput>
   collectedByUsers?: Prisma.UserStickerCollectionListRelationFilter
 }
@@ -252,6 +260,7 @@ export type StickerOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  rarity?: Prisma.SortOrder
   albumPage?: Prisma.AlbumPageOrderByWithRelationInput
   collectedByUsers?: Prisma.UserStickerCollectionOrderByRelationAggregateInput
 }
@@ -267,6 +276,7 @@ export type StickerWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumStatusFilter<"Sticker"> | $Enums.Status
   imgUrl?: Prisma.StringNullableFilter<"Sticker"> | string | null
   description?: Prisma.StringNullableFilter<"Sticker"> | string | null
+  rarity?: Prisma.EnumRarityFilter<"Sticker"> | $Enums.Rarity
   albumPage?: Prisma.XOR<Prisma.AlbumPageScalarRelationFilter, Prisma.AlbumPageWhereInput>
   collectedByUsers?: Prisma.UserStickerCollectionListRelationFilter
 }, "id">
@@ -279,6 +289,7 @@ export type StickerOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  rarity?: Prisma.SortOrder
   _count?: Prisma.StickerCountOrderByAggregateInput
   _avg?: Prisma.StickerAvgOrderByAggregateInput
   _max?: Prisma.StickerMaxOrderByAggregateInput
@@ -297,6 +308,7 @@ export type StickerScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumStatusWithAggregatesFilter<"Sticker"> | $Enums.Status
   imgUrl?: Prisma.StringNullableWithAggregatesFilter<"Sticker"> | string | null
   description?: Prisma.StringNullableWithAggregatesFilter<"Sticker"> | string | null
+  rarity?: Prisma.EnumRarityWithAggregatesFilter<"Sticker"> | $Enums.Rarity
 }
 
 export type StickerCreateInput = {
@@ -305,6 +317,7 @@ export type StickerCreateInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
   albumPage: Prisma.AlbumPageCreateNestedOneWithoutStickersInput
   collectedByUsers?: Prisma.UserStickerCollectionCreateNestedManyWithoutStickerInput
 }
@@ -317,6 +330,7 @@ export type StickerUncheckedCreateInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutStickerInput
 }
 
@@ -326,6 +340,7 @@ export type StickerUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
   albumPage?: Prisma.AlbumPageUpdateOneRequiredWithoutStickersNestedInput
   collectedByUsers?: Prisma.UserStickerCollectionUpdateManyWithoutStickerNestedInput
 }
@@ -338,6 +353,7 @@ export type StickerUncheckedUpdateInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutStickerNestedInput
 }
 
@@ -349,6 +365,7 @@ export type StickerCreateManyInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
 }
 
 export type StickerUpdateManyMutationInput = {
@@ -357,6 +374,7 @@ export type StickerUpdateManyMutationInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
 }
 
 export type StickerUncheckedUpdateManyInput = {
@@ -367,6 +385,7 @@ export type StickerUncheckedUpdateManyInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
 }
 
 export type StickerListRelationFilter = {
@@ -387,6 +406,7 @@ export type StickerCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  rarity?: Prisma.SortOrder
 }
 
 export type StickerAvgOrderByAggregateInput = {
@@ -403,6 +423,7 @@ export type StickerMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  rarity?: Prisma.SortOrder
 }
 
 export type StickerMinOrderByAggregateInput = {
@@ -413,6 +434,7 @@ export type StickerMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   imgUrl?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  rarity?: Prisma.SortOrder
 }
 
 export type StickerSumOrderByAggregateInput = {
@@ -468,6 +490,10 @@ export type StickerUncheckedUpdateManyWithoutAlbumPageNestedInput = {
   deleteMany?: Prisma.StickerScalarWhereInput | Prisma.StickerScalarWhereInput[]
 }
 
+export type EnumRarityFieldUpdateOperationsInput = {
+  set?: $Enums.Rarity
+}
+
 export type StickerCreateNestedOneWithoutCollectedByUsersInput = {
   create?: Prisma.XOR<Prisma.StickerCreateWithoutCollectedByUsersInput, Prisma.StickerUncheckedCreateWithoutCollectedByUsersInput>
   connectOrCreate?: Prisma.StickerCreateOrConnectWithoutCollectedByUsersInput
@@ -488,6 +514,7 @@ export type StickerCreateWithoutAlbumPageInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionCreateNestedManyWithoutStickerInput
 }
 
@@ -498,6 +525,7 @@ export type StickerUncheckedCreateWithoutAlbumPageInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionUncheckedCreateNestedManyWithoutStickerInput
 }
 
@@ -538,6 +566,7 @@ export type StickerScalarWhereInput = {
   status?: Prisma.EnumStatusFilter<"Sticker"> | $Enums.Status
   imgUrl?: Prisma.StringNullableFilter<"Sticker"> | string | null
   description?: Prisma.StringNullableFilter<"Sticker"> | string | null
+  rarity?: Prisma.EnumRarityFilter<"Sticker"> | $Enums.Rarity
 }
 
 export type StickerCreateWithoutCollectedByUsersInput = {
@@ -546,6 +575,7 @@ export type StickerCreateWithoutCollectedByUsersInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
   albumPage: Prisma.AlbumPageCreateNestedOneWithoutStickersInput
 }
 
@@ -557,6 +587,7 @@ export type StickerUncheckedCreateWithoutCollectedByUsersInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
 }
 
 export type StickerCreateOrConnectWithoutCollectedByUsersInput = {
@@ -581,6 +612,7 @@ export type StickerUpdateWithoutCollectedByUsersInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
   albumPage?: Prisma.AlbumPageUpdateOneRequiredWithoutStickersNestedInput
 }
 
@@ -592,6 +624,7 @@ export type StickerUncheckedUpdateWithoutCollectedByUsersInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
 }
 
 export type StickerCreateManyAlbumPageInput = {
@@ -601,6 +634,7 @@ export type StickerCreateManyAlbumPageInput = {
   status: $Enums.Status
   imgUrl?: string | null
   description?: string | null
+  rarity?: $Enums.Rarity
 }
 
 export type StickerUpdateWithoutAlbumPageInput = {
@@ -609,6 +643,7 @@ export type StickerUpdateWithoutAlbumPageInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionUpdateManyWithoutStickerNestedInput
 }
 
@@ -619,6 +654,7 @@ export type StickerUncheckedUpdateWithoutAlbumPageInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
   collectedByUsers?: Prisma.UserStickerCollectionUncheckedUpdateManyWithoutStickerNestedInput
 }
 
@@ -629,6 +665,7 @@ export type StickerUncheckedUpdateManyWithoutAlbumPageInput = {
   status?: Prisma.EnumStatusFieldUpdateOperationsInput | $Enums.Status
   imgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rarity?: Prisma.EnumRarityFieldUpdateOperationsInput | $Enums.Rarity
 }
 
 
@@ -670,6 +707,7 @@ export type StickerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   status?: boolean
   imgUrl?: boolean
   description?: boolean
+  rarity?: boolean
   albumPage?: boolean | Prisma.AlbumPageDefaultArgs<ExtArgs>
   collectedByUsers?: boolean | Prisma.Sticker$collectedByUsersArgs<ExtArgs>
   _count?: boolean | Prisma.StickerCountOutputTypeDefaultArgs<ExtArgs>
@@ -683,6 +721,7 @@ export type StickerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   imgUrl?: boolean
   description?: boolean
+  rarity?: boolean
   albumPage?: boolean | Prisma.AlbumPageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sticker"]>
 
@@ -694,6 +733,7 @@ export type StickerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   imgUrl?: boolean
   description?: boolean
+  rarity?: boolean
   albumPage?: boolean | Prisma.AlbumPageDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sticker"]>
 
@@ -705,9 +745,10 @@ export type StickerSelectScalar = {
   status?: boolean
   imgUrl?: boolean
   description?: boolean
+  rarity?: boolean
 }
 
-export type StickerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "albumPageId" | "stickerNumber" | "status" | "imgUrl" | "description", ExtArgs["result"]["sticker"]>
+export type StickerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "albumPageId" | "stickerNumber" | "status" | "imgUrl" | "description" | "rarity", ExtArgs["result"]["sticker"]>
 export type StickerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   albumPage?: boolean | Prisma.AlbumPageDefaultArgs<ExtArgs>
   collectedByUsers?: boolean | Prisma.Sticker$collectedByUsersArgs<ExtArgs>
@@ -734,6 +775,7 @@ export type $StickerPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     status: $Enums.Status
     imgUrl: string | null
     description: string | null
+    rarity: $Enums.Rarity
   }, ExtArgs["result"]["sticker"]>
   composites: {}
 }
@@ -1166,6 +1208,7 @@ export interface StickerFieldRefs {
   readonly status: Prisma.FieldRef<"Sticker", 'Status'>
   readonly imgUrl: Prisma.FieldRef<"Sticker", 'String'>
   readonly description: Prisma.FieldRef<"Sticker", 'String'>
+  readonly rarity: Prisma.FieldRef<"Sticker", 'Rarity'>
 }
     
 

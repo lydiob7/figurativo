@@ -17,6 +17,13 @@ enum Status {
   PUBLISHED
 }
 
+enum Rarity {
+  COMMON
+  RARE
+  EPIC
+  LEGENDARY
+}
+
 model Account {
   id                Int           @id @default(autoincrement())
   email             String
@@ -52,7 +59,7 @@ model Album {
   collectedByUsers  UserAlbumCollection[]
 
   // campos para los paquetes
-  stickersPerPack   Int?                @default(5) @map("stickers_per_pack")
+  stickersPerPack   Int                 @default(5) @map("stickers_per_pack")
   stickerPacks      UserStickerPack[]
 
   @@map("album")
@@ -100,6 +107,8 @@ model Sticker {
   imgUrl            String?                   @map("img_url")
   description       String?
   collectedByUsers  UserStickerCollection[]
+
+  rarity            Rarity                    @default(COMMON)
 
   @@map("sticker")
 }

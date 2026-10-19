@@ -15,3 +15,13 @@ export const Status = {
 } as const
 
 export type Status = (typeof Status)[keyof typeof Status]
+
+
+export const Rarity = {
+  COMMON: 'COMMON',
+  RARE: 'RARE',
+  EPIC: 'EPIC',
+  LEGENDARY: 'LEGENDARY'
+} as const
+
+export type Rarity = (typeof Rarity)[keyof typeof Rarity]

@@ -213,7 +213,7 @@ export type AlbumGroupByOutputType = {
   backCoverImgUrl: string | null
   authorId: number
   description: string | null
-  stickersPerPack: number | null
+  stickersPerPack: number
   _count: AlbumCountAggregateOutputType | null
   _avg: AlbumAvgAggregateOutputType | null
   _sum: AlbumSumAggregateOutputType | null
@@ -247,7 +247,7 @@ export type AlbumWhereInput = {
   backCoverImgUrl?: Prisma.StringNullableFilter<"Album"> | string | null
   authorId?: Prisma.IntFilter<"Album"> | number
   description?: Prisma.StringNullableFilter<"Album"> | string | null
-  stickersPerPack?: Prisma.IntNullableFilter<"Album"> | number | null
+  stickersPerPack?: Prisma.IntFilter<"Album"> | number
   pages?: Prisma.AlbumPageListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   collectedByUsers?: Prisma.UserAlbumCollectionListRelationFilter
@@ -262,7 +262,7 @@ export type AlbumOrderByWithRelationInput = {
   backCoverImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  stickersPerPack?: Prisma.SortOrderInput | Prisma.SortOrder
+  stickersPerPack?: Prisma.SortOrder
   pages?: Prisma.AlbumPageOrderByRelationAggregateInput
   author?: Prisma.UserOrderByWithRelationInput
   collectedByUsers?: Prisma.UserAlbumCollectionOrderByRelationAggregateInput
@@ -280,7 +280,7 @@ export type AlbumWhereUniqueInput = Prisma.AtLeast<{
   backCoverImgUrl?: Prisma.StringNullableFilter<"Album"> | string | null
   authorId?: Prisma.IntFilter<"Album"> | number
   description?: Prisma.StringNullableFilter<"Album"> | string | null
-  stickersPerPack?: Prisma.IntNullableFilter<"Album"> | number | null
+  stickersPerPack?: Prisma.IntFilter<"Album"> | number
   pages?: Prisma.AlbumPageListRelationFilter
   author?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   collectedByUsers?: Prisma.UserAlbumCollectionListRelationFilter
@@ -295,7 +295,7 @@ export type AlbumOrderByWithAggregationInput = {
   backCoverImgUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   authorId?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
-  stickersPerPack?: Prisma.SortOrderInput | Prisma.SortOrder
+  stickersPerPack?: Prisma.SortOrder
   _count?: Prisma.AlbumCountOrderByAggregateInput
   _avg?: Prisma.AlbumAvgOrderByAggregateInput
   _max?: Prisma.AlbumMaxOrderByAggregateInput
@@ -314,7 +314,7 @@ export type AlbumScalarWhereWithAggregatesInput = {
   backCoverImgUrl?: Prisma.StringNullableWithAggregatesFilter<"Album"> | string | null
   authorId?: Prisma.IntWithAggregatesFilter<"Album"> | number
   description?: Prisma.StringNullableWithAggregatesFilter<"Album"> | string | null
-  stickersPerPack?: Prisma.IntNullableWithAggregatesFilter<"Album"> | number | null
+  stickersPerPack?: Prisma.IntWithAggregatesFilter<"Album"> | number
 }
 
 export type AlbumCreateInput = {
@@ -323,7 +323,7 @@ export type AlbumCreateInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageCreateNestedManyWithoutAlbumInput
   author: Prisma.UserCreateNestedOneWithoutCreatedAlbumsInput
   collectedByUsers?: Prisma.UserAlbumCollectionCreateNestedManyWithoutAlbumInput
@@ -338,7 +338,7 @@ export type AlbumUncheckedCreateInput = {
   backCoverImgUrl?: string | null
   authorId: number
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageUncheckedCreateNestedManyWithoutAlbumInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutAlbumInput
@@ -350,7 +350,7 @@ export type AlbumUpdateInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUpdateManyWithoutAlbumNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutCreatedAlbumsNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUpdateManyWithoutAlbumNestedInput
@@ -365,7 +365,7 @@ export type AlbumUncheckedUpdateInput = {
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUncheckedUpdateManyWithoutAlbumNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutAlbumNestedInput
@@ -379,7 +379,7 @@ export type AlbumCreateManyInput = {
   backCoverImgUrl?: string | null
   authorId: number
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
 }
 
 export type AlbumUpdateManyMutationInput = {
@@ -388,7 +388,7 @@ export type AlbumUpdateManyMutationInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type AlbumUncheckedUpdateManyInput = {
@@ -399,7 +399,7 @@ export type AlbumUncheckedUpdateManyInput = {
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type AlbumListRelationFilter = {
@@ -512,14 +512,6 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
 export type AlbumCreateNestedOneWithoutCollectedByUsersInput = {
   create?: Prisma.XOR<Prisma.AlbumCreateWithoutCollectedByUsersInput, Prisma.AlbumUncheckedCreateWithoutCollectedByUsersInput>
   connectOrCreate?: Prisma.AlbumCreateOrConnectWithoutCollectedByUsersInput
@@ -568,7 +560,7 @@ export type AlbumCreateWithoutAuthorInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageCreateNestedManyWithoutAlbumInput
   collectedByUsers?: Prisma.UserAlbumCollectionCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutAlbumInput
@@ -581,7 +573,7 @@ export type AlbumUncheckedCreateWithoutAuthorInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageUncheckedCreateNestedManyWithoutAlbumInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutAlbumInput
@@ -624,7 +616,7 @@ export type AlbumScalarWhereInput = {
   backCoverImgUrl?: Prisma.StringNullableFilter<"Album"> | string | null
   authorId?: Prisma.IntFilter<"Album"> | number
   description?: Prisma.StringNullableFilter<"Album"> | string | null
-  stickersPerPack?: Prisma.IntNullableFilter<"Album"> | number | null
+  stickersPerPack?: Prisma.IntFilter<"Album"> | number
 }
 
 export type AlbumCreateWithoutCollectedByUsersInput = {
@@ -633,7 +625,7 @@ export type AlbumCreateWithoutCollectedByUsersInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageCreateNestedManyWithoutAlbumInput
   author: Prisma.UserCreateNestedOneWithoutCreatedAlbumsInput
   stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutAlbumInput
@@ -647,7 +639,7 @@ export type AlbumUncheckedCreateWithoutCollectedByUsersInput = {
   backCoverImgUrl?: string | null
   authorId: number
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageUncheckedCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutAlbumInput
 }
@@ -674,7 +666,7 @@ export type AlbumUpdateWithoutCollectedByUsersInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUpdateManyWithoutAlbumNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutCreatedAlbumsNestedInput
   stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutAlbumNestedInput
@@ -688,7 +680,7 @@ export type AlbumUncheckedUpdateWithoutCollectedByUsersInput = {
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUncheckedUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutAlbumNestedInput
 }
@@ -699,7 +691,7 @@ export type AlbumCreateWithoutPagesInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   author: Prisma.UserCreateNestedOneWithoutCreatedAlbumsInput
   collectedByUsers?: Prisma.UserAlbumCollectionCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackCreateNestedManyWithoutAlbumInput
@@ -713,7 +705,7 @@ export type AlbumUncheckedCreateWithoutPagesInput = {
   backCoverImgUrl?: string | null
   authorId: number
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutAlbumInput
   stickerPacks?: Prisma.UserStickerPackUncheckedCreateNestedManyWithoutAlbumInput
 }
@@ -740,7 +732,7 @@ export type AlbumUpdateWithoutPagesInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   author?: Prisma.UserUpdateOneRequiredWithoutCreatedAlbumsNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutAlbumNestedInput
@@ -754,7 +746,7 @@ export type AlbumUncheckedUpdateWithoutPagesInput = {
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutAlbumNestedInput
 }
@@ -765,7 +757,7 @@ export type AlbumCreateWithoutStickerPacksInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageCreateNestedManyWithoutAlbumInput
   author: Prisma.UserCreateNestedOneWithoutCreatedAlbumsInput
   collectedByUsers?: Prisma.UserAlbumCollectionCreateNestedManyWithoutAlbumInput
@@ -779,7 +771,7 @@ export type AlbumUncheckedCreateWithoutStickerPacksInput = {
   backCoverImgUrl?: string | null
   authorId: number
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
   pages?: Prisma.AlbumPageUncheckedCreateNestedManyWithoutAlbumInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedCreateNestedManyWithoutAlbumInput
 }
@@ -806,7 +798,7 @@ export type AlbumUpdateWithoutStickerPacksInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUpdateManyWithoutAlbumNestedInput
   author?: Prisma.UserUpdateOneRequiredWithoutCreatedAlbumsNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUpdateManyWithoutAlbumNestedInput
@@ -820,7 +812,7 @@ export type AlbumUncheckedUpdateWithoutStickerPacksInput = {
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUncheckedUpdateManyWithoutAlbumNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutAlbumNestedInput
 }
@@ -832,7 +824,7 @@ export type AlbumCreateManyAuthorInput = {
   coverImgUrl?: string | null
   backCoverImgUrl?: string | null
   description?: string | null
-  stickersPerPack?: number | null
+  stickersPerPack?: number
 }
 
 export type AlbumUpdateWithoutAuthorInput = {
@@ -841,7 +833,7 @@ export type AlbumUpdateWithoutAuthorInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUpdateManyWithoutAlbumNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUpdateManyWithoutAlbumNestedInput
@@ -854,7 +846,7 @@ export type AlbumUncheckedUpdateWithoutAuthorInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
   pages?: Prisma.AlbumPageUncheckedUpdateManyWithoutAlbumNestedInput
   collectedByUsers?: Prisma.UserAlbumCollectionUncheckedUpdateManyWithoutAlbumNestedInput
   stickerPacks?: Prisma.UserStickerPackUncheckedUpdateManyWithoutAlbumNestedInput
@@ -867,7 +859,7 @@ export type AlbumUncheckedUpdateManyWithoutAuthorInput = {
   coverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   backCoverImgUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  stickersPerPack?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  stickersPerPack?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -1001,7 +993,7 @@ export type $AlbumPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     backCoverImgUrl: string | null
     authorId: number
     description: string | null
-    stickersPerPack: number | null
+    stickersPerPack: number
   }, ExtArgs["result"]["album"]>
   composites: {}
 }
