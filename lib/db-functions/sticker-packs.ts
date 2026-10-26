@@ -2,7 +2,10 @@ import { MAX_STICKERS_PACK_PER_USER_PER_DAY } from '@/constants/album-constants'
 import prismaClient from '@/prisma/lib/prisma'
 import { getUser } from '@/utils/getUser'
 import { createRandomUserStickerCollection, RARITY_WEIGHTS } from './stickers'
-import { UserStickerCollection } from '@/prisma/generated/prisma/client'
+import {
+  Sticker,
+  UserStickerCollection,
+} from '@/prisma/generated/prisma/client'
 
 export async function getRemainingPacksCount() {
   const user = await getUser()
@@ -16,7 +19,14 @@ export async function getRemainingPacksCount() {
   return MAX_STICKERS_PACK_PER_USER_PER_DAY - openedAlbumsToday
 }
 
-export async function openStickerPack(albumId: number) {
+export type OpenStickerPackResponse = {
+  remainingPacksCount: number
+  stickerCollected: (UserStickerCollection & { sticker: Sticker })[]
+}
+
+export async function openStickerPack(
+  albumId: number,
+): Promise<OpenStickerPackResponse> {
   'use server'
   const user = await getUser()
   const remainingPacks = await getRemainingPacksCount()
@@ -47,7 +57,7 @@ export async function openStickerPack(albumId: number) {
     select: { id: true, rarity: true },
   })
 
-  const stickers: UserStickerCollection[] = []
+  const stickers: (UserStickerCollection & { sticker: Sticker })[] = []
 
   const totalAlbumWeights = albumStickers.reduce((acc, sticker) => {
     const stickerWeight = RARITY_WEIGHTS[sticker.rarity]
@@ -70,5 +80,8 @@ export async function openStickerPack(albumId: number) {
     stickers.push(newSticker)
   }
 
-  return stickers
+  return {
+    remainingPacksCount: remainingPacks - 1,
+    stickerCollected: stickers,
+  }
 }

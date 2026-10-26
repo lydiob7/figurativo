@@ -1,3 +1,7 @@
+import {
+  Sticker,
+  UserStickerCollection,
+} from '@/prisma/generated/prisma/client'
 import { Rarity } from '@/prisma/generated/prisma/enums'
 import prismaClient from '@/prisma/lib/prisma'
 
@@ -7,6 +11,12 @@ export const RARITY_WEIGHTS = {
   [Rarity.EPIC]: 15,
   [Rarity.LEGENDARY]: 5,
 }
+
+type NewSticker = Prisma.UserStickerCollectionGetPayload<{
+  include: {
+    sticker: true
+  }
+}>
 
 export async function createRandomUserStickerCollection({
   albumStickers,
@@ -26,15 +36,16 @@ export async function createRandomUserStickerCollection({
       break
     }
   }
-  const newSticker = await prismaClient.userStickerCollection.create({
-    data: {
-      userId,
-      stickerId: randomStickerId,
-    },
-    include: {
-      sticker: true,
-    },
-  })
+  const newSticker: UserStickerCollection & { sticker: Sticker } =
+    await prismaClient.userStickerCollection.create({
+      data: {
+        userId,
+        stickerId: randomStickerId,
+      },
+      include: {
+        sticker: true,
+      },
+    })
 
   return newSticker
 }

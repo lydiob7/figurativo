@@ -1,3 +1,4 @@
+import StickerCard from '@/components/albums/StickerCard'
 import prismaClient from '@/prisma/lib/prisma'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -35,26 +36,7 @@ async function AlbumPageContent({
       {!!albumPage.name && <h2 className="">{albumPage.name}</h2>}
       <div className="grid gap-4 grid-cols-4">
         {albumPage.stickers?.map((sticker) => (
-          <div className="p-4 border border-white rounded-lg" key={sticker.id}>
-            {!!sticker.imgUrl && (
-              <div className="relative h-40 w-full">
-                <Image
-                  src={sticker.imgUrl}
-                  alt={sticker.name}
-                  className="object-contain"
-                  fill
-                />
-              </div>
-            )}
-            <h3 className="text-center font-semibold text-lg mt-4">
-              {sticker.name}
-            </h3>
-            {!!sticker.description && (
-              <p className="text-center tracking-wider">
-                {sticker.description}
-              </p>
-            )}
-          </div>
+          <StickerCard key={sticker.id} sticker={sticker} />
         ))}
       </div>
       <div className="mt-8">{albumPage.pageNumber}</div>

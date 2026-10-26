@@ -39,7 +39,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Link href="/" className="text-xl font-bold uppercase">
             Figurativo
           </Link>
-          <nav></nav>
+          <nav>
+            <Link href="/my-collection">Mi colección</Link>
+          </nav>
         </header>
         {children}
       </body>
