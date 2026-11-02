@@ -47,7 +47,7 @@ export default function OpenPackButton({
 
       {isPackModalOpen && (
         <div
-          className="fixed z-20 inset-0 bg-black/60 py-8 px-16"
+          className="fixed z-[9999] inset-0 bg-black/60 py-8 px-16"
           onClick={() => handleCloseModal()}
         >
           <button
@@ -57,7 +57,7 @@ export default function OpenPackButton({
           >
             X
           </button>
-          <div className="bg-slate-800 w-full h-full rounded-xl p-8 overflow-auto max-w-6xl mx-auto">
+          <div className="bg-[#F3E1CF] w-full h-full rounded-xl p-8 overflow-auto max-w-6xl mx-auto">
             <div className="grid gap-4 grid-cols-4">
               {newStickers?.map((stickerUserCollection) => (
                 <StickerCard

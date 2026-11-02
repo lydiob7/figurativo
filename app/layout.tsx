@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en"
       className={cn(
         'h-full',
-        'antialiased dark',
+        'antialiased',
         geistSans.variable,
         geistMono.variable,
         'font-sans',
