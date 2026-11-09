@@ -37,7 +37,12 @@ export default function AlbumCard({
   }
 
   return (
-    <Card className="relative mx-auto w-full max-w-sm pt-0">
+    <Card
+      onClick={() => {
+        if (isInCollection) router.push(`/album/${album.id}/page/1`)
+      }}
+      className="relative mx-auto w-full max-w-sm pt-0 cursor-pointer"
+    >
       <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
       {album.coverImgUrl && (
         <Image
@@ -57,7 +62,7 @@ export default function AlbumCard({
       </CardHeader>
       <CardFooter>
         {isInCollection ? (
-          <Link href={`/album/${album.id}`} className="block w-full">
+          <Link href={`/album/${album.id}/page/1`} className="block w-full">
             <Button className="w-full">Ver album</Button>
           </Link>
         ) : (

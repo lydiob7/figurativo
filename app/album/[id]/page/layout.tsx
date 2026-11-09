@@ -3,7 +3,6 @@ import {
   getRemainingPacksCount,
   openStickerPack,
 } from '@/lib/db-functions/sticker-packs'
-import Link from 'next/link'
 
 export default async function AlbumPageLayout({
   children,
@@ -14,9 +13,7 @@ export default async function AlbumPageLayout({
 
   return (
     <div className="container mx-auto">
-      <div className="flex items-center justify-between">
-        <Link href={`/album/${albumId}`}>&lt; Volver al album</Link>
-
+      <div className="flex items-center justify-end">
         <OpenPackButton
           albumId={parseInt(albumId, 10)}
           remainingPacks={remainingPacks}

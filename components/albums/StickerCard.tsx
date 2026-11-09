@@ -1,9 +1,11 @@
 'use client'
 
 import { Sticker } from '@/prisma/generated/prisma/client'
+import { cn } from 'cn'
 import Image from 'next/image'
 
 interface StickerCardProps {
+  copyIsGlued?: boolean
   isGlued?: boolean
   isGlueable?: boolean
   onGlue?: (userStickerId: number) => Promise<unknown>
@@ -18,6 +20,7 @@ function isStickerWithName(
 }
 
 export default function StickerCard({
+  copyIsGlued,
   isGlueable,
   onGlue,
   sticker,
@@ -56,10 +59,14 @@ export default function StickerCard({
 
         {isGlueable && (
           <button
-            className="absolute z-30 top-1/2 left-1/2 -translate-1/2 bg-green-600 text-white px-8 py-2 rounded-sm font-semibold opacity-0 group-hover:opacity-100 transition-all"
+            className={cn(
+              'absolute z-30 top-1/2 left-1/2 -translate-1/2 px-8 py-2 rounded-sm font-semibold opacity-0 group-hover:opacity-100 transition-all',
+              copyIsGlued ? 'bg-amber-400' : 'bg-green-600 text-white',
+            )}
             onClick={() => onGlue && userStickerId && onGlue(userStickerId)}
+            disabled={copyIsGlued}
           >
-            Pegar figurita
+            {copyIsGlued ? 'Esta figurita ya está pegada' : 'Pegar figurita'}
           </button>
         )}
 
