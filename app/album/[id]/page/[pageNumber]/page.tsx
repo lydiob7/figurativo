@@ -1,50 +1,13 @@
+import AlbumNavigationArrow from '@/components/albums/AlbumNavigationArrow'
 import StickerCard from '@/components/albums/StickerCard'
-import prismaClient from '@/prisma/lib/prisma'
-import { getUser } from '@/utils/getUser'
+import {
+  getAlbumLastPageNumber,
+  getAlbumPages,
+} from '@/lib/db-functions/albums'
+import { getGluedUserStickerCollectionByAlbumId } from '@/lib/db-functions/stickers'
 import { cn } from 'cn'
 import { notFound, redirect } from 'next/navigation'
 import { Suspense } from 'react'
-
-async function getAlbumPages(albumId: number, pageNumbers: number[]) {
-  const albumPages = await prismaClient.albumPage.findMany({
-    where: {
-      pageNumber: { in: pageNumbers },
-      albumId,
-      album: { status: 'PUBLISHED' },
-    },
-    include: {
-      template: true,
-      stickers: {
-        select: {
-          id: true,
-          stickerNumber: true,
-        },
-        orderBy: {
-          stickerNumber: 'asc',
-        },
-      },
-    },
-  })
-  if (!albumPages || albumPages.length < 1) notFound()
-  return albumPages
-}
-
-async function getGluedUserStickerCollectionByAlbumId(albumId: number) {
-  const user = await getUser()
-  if (!user) return []
-  const gluedStickers = await prismaClient.userStickerCollection.findMany({
-    where: {
-      userId: user.id,
-      isGlued: true,
-      sticker: { albumPage: { albumId } },
-    },
-    include: {
-      sticker: true,
-    },
-  })
-
-  return gluedStickers
-}
 
 async function AlbumPageContent({
   params,
@@ -78,16 +41,25 @@ async function AlbumPageContent({
     pageNumberParts.map((pageNumber) => parseInt(pageNumber, 10)),
   )
 
+  const lastPageNumber = await getAlbumLastPageNumber(parseInt(id, 10))
+
   const allGluedStickers = await getGluedUserStickerCollectionByAlbumId(
     parseInt(id, 10),
   )
 
   return (
-    <div className="grid grid-cols-2">
+    <div className="relative grid grid-cols-2">
+      {!albumPages.some((page) => page.pageNumber === 1) && (
+        <AlbumNavigationArrow
+          direction="left"
+          albumId={parseInt(id, 10)}
+          albumPageNumbers={albumPages.map((page) => page.pageNumber)}
+        />
+      )}
       {albumPages.map((albumPage) => (
         <div
           className={cn(
-            'border border-green-500 p-8',
+            'relative border border-green-500 p-8 pb-20',
             albumPage.pageNumber === 1 ? 'col-start-2' : '',
           )}
           key={albumPage.id}
@@ -113,14 +85,23 @@ async function AlbumPageContent({
           </div>
           <div
             className={cn(
-              'mt-8 flex items-center',
-              albumPage.pageNumber % 2 === 0 ? '' : 'justify-end',
+              'absolute bottom-8',
+              albumPage.pageNumber % 2 === 0 ? 'left-8' : 'right-8',
             )}
           >
             {albumPage.pageNumber}
           </div>
         </div>
       ))}
+
+      {!albumPages.some((page) => page.pageNumber === lastPageNumber) && (
+        <AlbumNavigationArrow
+          direction="right"
+          albumId={parseInt(id, 10)}
+          albumPageNumbers={albumPages.map((page) => page.pageNumber)}
+          lastPageNumber={lastPageNumber}
+        />
+      )}
     </div>
   )
 }

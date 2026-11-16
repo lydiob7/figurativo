@@ -17,7 +17,7 @@ import Link from 'next/link'
 
 interface AlbumCardProps {
   album: Album
-  buyAlbum: (albumId: number) => Promise<void>
+  buyAlbum?: (albumId: number) => Promise<void>
   isInCollection?: boolean
 }
 
@@ -29,7 +29,7 @@ export default function AlbumCard({
   const router = useRouter()
   const handleBuyAlbum = async () => {
     try {
-      await buyAlbum(album.id)
+      await buyAlbum?.(album.id)
       router.push(`/album/${album.id}`)
     } catch (error) {
       if (error instanceof Error) alert(`Hubo un error: ${error.message}`)
