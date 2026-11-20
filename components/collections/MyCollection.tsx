@@ -5,6 +5,7 @@ import StickerCard from '../albums/StickerCard'
 import { useState } from 'react'
 import AlbumCard from '../albums/AlbumCard'
 import { Album, UserAlbumCollection } from '@/prisma/generated/prisma/client'
+import { Button } from '../ui/button'
 
 type MyCollectionProps = {
   glueStickerAction: (userStickerId: number) => Promise<unknown>
@@ -24,25 +25,25 @@ export default function MyCollection({
   return (
     <div>
       <div className="flex items-center">
-        <button
+        <Button
           type="button"
           onClick={() => setCurrentTab('stickers')}
-          className={`px-4 py-2 font-semibold ${currentTab === 'stickers' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+          variant={currentTab === 'stickers' ? 'default' : 'ghost'}
         >
           Stickers
-        </button>
+        </Button>
 
-        <button
+        <Button
           type="button"
           onClick={() => setCurrentTab('albums')}
-          className={`px-4 py-2 font-semibold ${currentTab === 'albums' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'}`}
+          variant={currentTab === 'albums' ? 'default' : 'ghost'}
         >
           Albums
-        </button>
+        </Button>
       </div>
 
       {currentTab === 'stickers' && (
-        <div className="grid grid-cols-4 gap-4 mt-8">
+        <div className="grid grid-cols-6 gap-4 mt-8">
           {myStickers.map((userSticker) => (
             <StickerCard
               key={userSticker.id}

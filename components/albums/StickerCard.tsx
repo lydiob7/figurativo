@@ -3,6 +3,7 @@
 import { Sticker } from '@/prisma/generated/prisma/client'
 import { cn } from 'cn'
 import Image from 'next/image'
+import { Button } from '../ui/button'
 
 interface StickerCardProps {
   copyIsGlued?: boolean
@@ -58,27 +59,33 @@ export default function StickerCard({
         />
 
         {isGlueable && (
-          <button
-            className={cn(
-              'absolute z-30 top-1/2 left-1/2 -translate-1/2 px-8 py-2 rounded-sm font-semibold opacity-0 group-hover:opacity-100 transition-all',
-              copyIsGlued ? 'bg-amber-400' : 'bg-green-600 text-white',
+          <div className="absolute z-30 inset-0 grid place-items-center opacity-0 group-hover:opacity-100 transition-all">
+            {copyIsGlued ? (
+              <div className="bg-amber-400 text-gray-800 px-4 py-2 rounded-xs text-sm">
+                Esta figurita ya está pegada
+              </div>
+            ) : (
+              <Button
+                onClick={() => onGlue && userStickerId && onGlue(userStickerId)}
+                disabled={copyIsGlued}
+              >
+                Pegar figurita
+              </Button>
             )}
-            onClick={() => onGlue && userStickerId && onGlue(userStickerId)}
-            disabled={copyIsGlued}
-          >
-            {copyIsGlued ? 'Esta figurita ya está pegada' : 'Pegar figurita'}
-          </button>
+          </div>
         )}
 
-        <h3 className="absolute z-30 bottom-[10%] left-1/2 -translate-x-1/2 text-center font-semibold text-lg mt-4">
+        <h3 className="absolute z-30 bottom-[11%] inset-x-[12%] text-center font-semibold text-[clamp(0.45rem,5cqw,0.8rem)] leading-none mt-4">
           {sticker.name}
         </h3>
-        <span className="absolute z-30 text-white top-[5%] right-[15%] font-semibold font-mono">
+        <span className="absolute z-30 text-white top-[5%] right-[12%] font-semibold font-mono text-[clamp(0.5rem,4cqw,0.8rem)] leading-none">
           {sticker.stickerNumber?.toString().padStart(3, '0')}
         </span>
       </div>
       {!!sticker.description && (
-        <p className="text-center tracking-wider">{sticker.description}</p>
+        <p className="tracking-wider text-gray-600 text-sm p-2 border border-gray-300 rounded-md mt-2">
+          {sticker.description}
+        </p>
       )}
     </div>
   )

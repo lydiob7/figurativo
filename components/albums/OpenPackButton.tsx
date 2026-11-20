@@ -8,6 +8,8 @@ import {
 import { useState } from 'react'
 import StickerCard from './StickerCard'
 import { OpenStickerPackResponse } from '@/lib/db-functions/sticker-packs'
+import { LuX } from 'react-icons/lu'
+import Link from 'next/link'
 
 interface OpenPackButtonProps {
   remainingPacks: number
@@ -47,18 +49,18 @@ export default function OpenPackButton({
 
       {isPackModalOpen && (
         <div
-          className="fixed z-[9999] inset-0 bg-black/60 py-8 px-16"
+          className="fixed grid place-items-center z-9999 inset-0 bg-black/60 py-8 px-16"
           onClick={() => handleCloseModal()}
         >
           <button
-            className="absolute top-4 right-8"
+            className="absolute bg-white rounded-full p-2 top-4 right-8 z-99999 cursor-pointer"
             type="button"
             onClick={() => handleCloseModal()}
           >
-            X
+            <LuX />
           </button>
-          <div className="bg-[#F3E1CF] w-full h-full rounded-xl p-8 overflow-auto max-w-6xl mx-auto">
-            <div className="grid gap-4 grid-cols-4">
+          <div className="bg-[#F3E1CF] w-full h-auto rounded-md px-8 py-16 overflow-auto max-w-6xl mx-auto flex flex-col items-center gap-8">
+            <div className="grid gap-4 grid-cols-5">
               {newStickers?.map((stickerUserCollection) => (
                 <StickerCard
                   key={stickerUserCollection.id}
@@ -66,6 +68,10 @@ export default function OpenPackButton({
                 />
               ))}
             </div>
+
+            <Link href="/my-collection">
+              <Button>Mi colección</Button>
+            </Link>
           </div>
         </div>
       )}
