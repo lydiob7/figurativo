@@ -57,7 +57,7 @@ export default function MyCollection({
       )}
 
       {currentTab === 'albums' && (
-        <div className="grid gap-4 grid-cols-4 mt-8">
+        <div className="grid gap-4 grid-cols-3 mt-8">
           {myAlbums?.map((userAlbum) => (
             <AlbumCard
               key={`${userAlbum.userId}-${userAlbum.albumId}`}

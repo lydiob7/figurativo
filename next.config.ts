@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       new URL('https://imgs.search.brave.com/**'),
       new URL('https://raw.githubusercontent.com/**'),
+      new URL('https://lydiob7.com/**'),
       {
         protocol: 'https',
         hostname: 'cdn.wallapop.com',
